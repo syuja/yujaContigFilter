@@ -4,7 +4,7 @@
         "syuja"
     ],
     "contact": "",
-    "categories": ["active"],
+    "categories": ["active","assembly","annotation","sequence","comparative_genomics"],
     "widgets": {
         "input": null,
         "output": null

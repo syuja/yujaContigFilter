@@ -6,7 +6,8 @@ name: Super Contig Filter
 tooltip: |
     Practice contig filter
 
-screenshots: []
+screenshots: 
+	- dna.jpg
 
 icon: contig_filter.png
 
@@ -39,3 +40,11 @@ parameters :
 
 description : |
 	<p> Hopefully I'll be able to delete this method after I'm done with it!!!</p>
+
+publications :
+	- 
+		pmid: 9999
+		display-text: |
+			'This is a fake publication!! <-- don't pay too much attention to this!!!"
+		link: http://www.yahoo.com
+
