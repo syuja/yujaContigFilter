@@ -170,3 +170,11 @@ class syujaContigFilter(object):
         if 'result' not in resp:
             raise ServerError('Unknown', 0, 'An unknown server error occurred')
         return resp['result']
+ 
+    def filter_contigs(self, workspace_name, contigset, json_rpc_context = None):
+        if json_rpc_context and type(json_rpc_context) is not dict:
+            raise ValueError('Method filter_contigs: argument json_rpc_context is not type dict as required.')
+        resp = self._call('syujaContigFilter.filter_contigs',
+                          [workspace_name, contigset], json_rpc_context)
+        return resp[0]
+ 

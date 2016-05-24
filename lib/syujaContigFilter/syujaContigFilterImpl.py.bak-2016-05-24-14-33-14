@@ -26,16 +26,3 @@ class syujaContigFilter:
         #BEGIN_CONSTRUCTOR
         #END_CONSTRUCTOR
         pass
-
-    def filter_contigs(self, ctx, workspace_name, contigset):
-        # ctx is the context object
-        # return variables are: returnVal
-        #BEGIN filter_contigs
-        #END filter_contigs
-
-        # At some point might do deeper type checking...
-        if not isinstance(returnVal, dict):
-            raise ValueError('Method filter_contigs return value ' +
-                             'returnVal is not type dict as required.')
-        # return the results
-        return [returnVal]

@@ -1,9 +1,16 @@
 package us.kbase.syujacontigfilter;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import us.kbase.auth.AuthToken;
 import us.kbase.common.service.JsonClientCaller;
+import us.kbase.common.service.JsonClientException;
+import us.kbase.common.service.RpcContext;
+import us.kbase.common.service.UnauthorizedException;
 
 /**
  * <p>Original spec-file module name: syujaContigFilter</p>
@@ -20,6 +27,35 @@ public class SyujaContigFilterClient {
      */
     public SyujaContigFilterClient(URL url) {
         caller = new JsonClientCaller(url);
+    }
+    /** Constructs a client with a custom URL.
+     * @param url the URL of the service.
+     * @param token the user's authorization token.
+     * @throws UnauthorizedException if the token is not valid.
+     * @throws IOException if an IOException occurs when checking the token's
+     * validity.
+     */
+    public SyujaContigFilterClient(URL url, AuthToken token) throws UnauthorizedException, IOException {
+        caller = new JsonClientCaller(url, token);
+    }
+
+    /** Constructs a client with a custom URL.
+     * @param url the URL of the service.
+     * @param user the user name.
+     * @param password the password for the user name.
+     * @throws UnauthorizedException if the credentials are not valid.
+     * @throws IOException if an IOException occurs when checking the user's
+     * credentials.
+     */
+    public SyujaContigFilterClient(URL url, String user, String password) throws UnauthorizedException, IOException {
+        caller = new JsonClientCaller(url, user, password);
+    }
+
+    /** Get the token this client uses to communicate with the server.
+     * @return the authorization token.
+     */
+    public AuthToken getToken() {
+        return caller.getToken();
     }
 
     /** Get the URL of the service with which this client communicates.
@@ -100,5 +136,24 @@ public class SyujaContigFilterClient {
 
     public void _setFileForNextRpcResponse(File f) {
         caller.setFileForNextRpcResponse(f);
+    }
+
+    /**
+     * <p>Original spec-file function name: filter_contigs</p>
+     * <pre>
+     * </pre>
+     * @param   workspaceName   instance of String
+     * @param   contigset   instance of original type "contigset_id"
+     * @return   instance of type {@link us.kbase.syujacontigfilter.FilterContigResults FilterContigResults}
+     * @throws IOException if an IO exception occurs
+     * @throws JsonClientException if a JSON RPC exception occurs
+     */
+    public FilterContigResults filterContigs(String workspaceName, String contigset, RpcContext... jsonRpcContext) throws IOException, JsonClientException {
+        List<Object> args = new ArrayList<Object>();
+        args.add(workspaceName);
+        args.add(contigset);
+        TypeReference<List<FilterContigResults>> retType = new TypeReference<List<FilterContigResults>>() {};
+        List<FilterContigResults> res = caller.jsonrpcCall("syujaContigFilter.filter_contigs", args, retType, true, true, jsonRpcContext);
+        return res.get(0);
     }
 }

@@ -10,6 +10,9 @@ MAINTAINER KBase Developer
 # -----------------------------------------
 
 COPY ./ /kb/module
+
+#any dependencies installed right here!! <-- 
+
 RUN mkdir -p /kb/module/work
 
 WORKDIR /kb/module

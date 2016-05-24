@@ -2,13 +2,13 @@ module-name:
     syujaContigFilter
 
 module-description:
-    A KBase module
+    Practice syuja ContigFilter
 
 service-language:
     python
 
 module-version:
-    0.0.1
+    1.0.1
 
 owners:
     [syuja]
