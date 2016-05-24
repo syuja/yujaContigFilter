@@ -35,8 +35,7 @@ parameters :
         short-hint : |
             enter integer up to size 32
         long-hint  : |
-	    first parameter to be entered should be <32...
+	          First parameter to be entered should be 32.
 
 description : |
- Hopefully I'll be able to delete this method after I'm done with it!!!
-
+	<p> Hopefully I'll be able to delete this method after I'm done with it!!!</p>
