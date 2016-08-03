@@ -15,6 +15,8 @@ COPY ./ /kb/module
 
 RUN mkdir -p /kb/module/work
 
+RUN apt-get install pip && pip install PYgresql
+
 WORKDIR /kb/module
 
 RUN make
